@@ -50,6 +50,7 @@ module Omochialienify
                pos2: random_position_string(width, height),
                pos3: random_position_string(width, height), pos4: random_position_string(width, height),
                outfile: outfile
+      outfile
     end
   end
 end

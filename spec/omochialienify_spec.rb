@@ -18,7 +18,8 @@ describe Omochialienify do
   end
 
   it 'omochifies an image' do
-    Omochialienify.omochify 'spec/omg.jpg'
-    system 'open spec/omg_omochi.jpg'
+    outfile = Omochialienify.omochify 'spec/omg.jpg'
+    expect(outfile).to eq 'spec/omg_omochi.jpg'
+    system "open #{outfile}"
   end
 end
