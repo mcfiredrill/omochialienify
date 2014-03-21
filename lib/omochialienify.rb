@@ -22,6 +22,11 @@ module Omochialienify
       [x,y]
     end
 
+    def random_position_string width, height
+      x, y = random_position width, height
+      "25%x25%+#{x}+#{y}"
+    end
+
     def image_size image
       line = Cocaine::CommandLine.new 'identify', ':image'
       result = line.run image: image
@@ -33,22 +38,18 @@ module Omochialienify
     end
 
     def omochify image
-      line = Cocaine::CommandLine.new 'convert', ":infile
-        :omochi1 -geometry :pos1 - composite
-        :omochi2 -geometry :pos2 - composite
-        :omochi3 -geometry :pos3 - composite
-        :omochi4 -geometry :pos4 - composite
-        :outfile"
+      line = Cocaine::CommandLine.new 'convert', ":infile -size 100% :omochi1 -geometry :pos1 -composite :omochi2 -geometry :pos2 -composite :omochi3 -geometry :pos3 -composite :omochi4 -geometry :pos4 -composite :outfile"
       ext = File.extname image
-      outfile = "#{File.basename(image, ext)}_omochi#{ext}"
+      dir = File.dirname image
+      outfile = "#{dir}/#{File.basename(image, ext)}_omochi#{ext}"
+      puts outfile
       width, height = image_size image
-      puts width, height
 
       line.run infile: image, omochi1: random_omochi, omochi2: random_omochi,
-               omochi3: random_omochi, omochi4: random_omochi, pos1: random_position(width, height).join('x'),
-               pos2: random_position(width, height).join('x'),
-               pos3: random_position(width, height).join('x'), pos4: random_position(width, height).join('x')
-      outfile
+               omochi3: random_omochi, omochi4: random_omochi, pos1: random_position_string(width, height),
+               pos2: random_position_string(width, height),
+               pos3: random_position_string(width, height), pos4: random_position_string(width, height),
+               outfile: outfile
     end
   end
 end

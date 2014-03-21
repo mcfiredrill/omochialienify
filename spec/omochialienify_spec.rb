@@ -13,8 +13,12 @@ describe Omochialienify do
     expect(y).to be < 1280
   end
 
+  it 'turns random position into string for image magick commands' do
+    expect(Omochialienify.random_position_string(853, 1280)).to match /\+\d+\+\d+/
+  end
+
   it 'omochifies an image' do
-    outfile = Omochialienify.omochify 'spec/omg.jpg'
-    expect(outfile).to eq 'omg_omochi.jpg'
+    Omochialienify.omochify 'spec/omg.jpg'
+    system 'open spec/omg_omochi.jpg'
   end
 end
