@@ -14,7 +14,7 @@ describe Omochialienify do
   end
 
   it 'turns random position into string for image magick commands' do
-    expect(Omochialienify.random_position_string(853, 1280)).to match /\+\d+\+\d+/
+    expect(Omochialienify.random_position_string(853, 1280)).to match /\d+%x\d+%\+\d+\+\d+/
   end
 
   it 'omochifies an image' do
