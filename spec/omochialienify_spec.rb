@@ -17,6 +17,10 @@ describe Omochialienify do
     expect(Omochialienify.random_position_string(853, 1280)).to match /\d+%x\d+%\+\d+\+\d+/
   end
 
+  it 'gets random omochis' do
+    expect(File.exists?(Omochialienify.random_omochi)).to eq true
+  end
+
   it 'omochifies an image' do
     outfile = Omochialienify.omochify 'spec/omg.jpg'
     expect(outfile).to eq 'spec/omg_omochi.jpg'

@@ -3,16 +3,15 @@ require 'cocaine'
 
 module Omochialienify
   OMOCHIS = [
-    File.absolute_path("lib/omochis/fusa1.png"),
-    File.absolute_path("lib/omochis/fusa2.png"),
-    File.absolute_path("lib/omochis/fusa3.png"),
-    File.absolute_path("lib/omochis/fusa4.png"),
-    File.absolute_path("lib/omochis/fusa5.png"),
-    File.absolute_path("lib/omochis/fusa6.png"),
-    File.absolute_path("lib/omochis/fusa7.png"),
-    File.absolute_path("lib/omochis/fusa8.png"),
-    File.absolute_path("lib/omochis/fusa9.png"),
-    File.absolute_path("lib/omochis/fusa10.png"),
+    File.expand_path("omochis/fusa2.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa3.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa4.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa5.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa6.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa7.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa8.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa9.png", File.dirname(__FILE__)),
+    File.expand_path("omochis/fusa10.png", File.dirname(__FILE__)),
   ]
 
   class << self
